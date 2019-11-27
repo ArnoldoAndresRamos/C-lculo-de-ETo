@@ -25,11 +25,14 @@ ecuación	________________________________________________
 $a=exp((17.27*$Tmedia)/($Tmedia+237.3));
 $b=0.6108*$a;
 $c=4098*$b;
-$d=pow(($Tmedia+237.3),2);
+$d=pow(($Tmedia+237.3),2); //pow() para elevear al cuadrado
 $r=$c/$d;
-echo $r;
+echo "Pendiente de la curva de preción de vapor ".$r;
 
 
-
+// P (Presión atmosférica)
+$w=(293-(0.0065*$Altitud))/293;
+$w1=101.3*(pow($w,5.26));
+echo "Presion Atmosférica ".$w1;
 
 ?>
