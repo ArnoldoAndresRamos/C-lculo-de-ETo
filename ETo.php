@@ -32,13 +32,13 @@ $w1=pow($w,5.26);
 $P=101.3*$w1;
 echo "Presion Atmosférica ".$P."<br>";
 
-#    γ Constante pscicrométrica en kPa°C-1
+//    γ Constante pscicrométrica en kPa°C-1
 
 $y = 0.000665*$P;  // $P es Presión Atmosférica
 echo "Constante psicrometrica ".$y."<br>";
 
 //   (1+0,34u2)
-$u2_1=1+0.3*$u2;
+$u2_1=1+0.34*$u2;
 echo "(1+0,34u2) ".$u2_1."<br>";
 
 			 
