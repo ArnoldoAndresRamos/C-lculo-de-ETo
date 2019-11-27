@@ -7,7 +7,7 @@
 
 $Tmax=35.8;  // 1.- Temperatura Maxima 		-> Tmax °C
 $Tmin=6.4;   // 2.- Temaperatura Minima 	-> Tmin °C
-$Altitud=0;  // 3.- Altitud			-> Altitud Metros					
+$Altitud=100;  // 3.- Altitud			-> Altitud Metros					
 $u2=0;	     // 4.- Velocidad del Viento	-> u2 metros/s-1
 $HRmax=0;    // 5.- humedad relativa Maxima 	-> HRmax
 $HRmin=0;    // 6.- humedad relativa Maxima 	-> HRmin
