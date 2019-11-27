@@ -7,7 +7,7 @@
 $Tmax=35.8;  // 1.- Temperatura Maxima 		-> Tmax °C
 $Tmin=6.4;   // 2.- Temaperatura Minima 	-> Tmin °C
 $Altitud=100;  // 3.- Altitud			-> Altitud Metros					
-$u2=0;	     // 4.- Velocidad del Viento	-> u2 metros/s-1
+$u2=3.1;     // 4.- Velocidad del Viento	-> u2 metros/s-1
 $HRmax=0;    // 5.- humedad relativa Maxima 	-> HRmax
 $HRmin=0;    // 6.- humedad relativa Maxima 	-> HRmin
 
@@ -30,7 +30,7 @@ echo "Pendiente de la curva de preción de vapor ".$r."<br>";
 $w=(293-(0.0065*$Altitud))/293;
 $w1=pow($w,5.26);
 $P=101.3*$w1;
-echo "Presion Atmosférica ".$P;
+echo "Presion Atmosférica ".$P."<br>";
 
 #    γ Constante pscicrométrica en kPa°C-1
 
