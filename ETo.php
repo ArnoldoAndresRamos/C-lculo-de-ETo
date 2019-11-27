@@ -27,12 +27,13 @@ $b=0.6108*$a;
 $c=4098*$b;
 $d=pow(($Tmedia+237.3),2); //pow() para elevear al cuadrado
 $r=$c/$d;
-echo "Pendiente de la curva de preción de vapor ".$r;
+echo "Pendiente de la curva de preción de vapor ".$r."<br>";
 
 
 // P (Presión atmosférica)
 $w=(293-(0.0065*$Altitud))/293;
 $w1=pow($w,5.26);
+echo $w1."<br>";
 $w2=101.3*w1;
 echo "Presion Atmosférica ".$w2;
 
