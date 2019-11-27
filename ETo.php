@@ -35,11 +35,11 @@ echo "Presion Atmosférica ".$P;
 #    γ Constante pscicrométrica en kPa°C-1
 
 $y = 0.000665*$P;  // $P es Presión Atmosférica
-echo "Constante psicrometrica ".$y;
+echo "Constante psicrometrica ".$y."<br>";
 
 //   (1+0,34u2)
 $u2_1=1+0.3*$u2;
-echo "(1+0,34u2) ".$u2_1;
+echo "(1+0,34u2) ".$u2_1."<br>";
 
 			 
 $zr = $r/($r+$y*$u2_1); //  Δ/[Δ+γ(1+0,34u2)]
