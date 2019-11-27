@@ -1,9 +1,9 @@
 <?php
-# Calculo de la evapotranpiracion de referncia
-# usando metodo Ecuacion de Penman-Monteith 
+// Calculo de la evapotranpiracion de referncia
+// usando metodo Ecuacion de Penman-Monteith 
 
 
-# Parametros usados en el calculo  
+//  Parametros usados en el calculo  
 
 $Tmax=35.8;  // 1.- Temperatura Maxima 		-> Tmax °C
 $Tmin=6.4;   // 2.- Temaperatura Minima 	-> Tmin °C
@@ -27,8 +27,6 @@ $PenCurvaDePresionDeVapor2 =((4098(0.6108*EXP((17.27*$Tmedia)/($Tmedia+237.3))))
 echo $PenCurvaDePresionDeVapor."<br>";
 echo $PenCurvaDePresionDeVapor2."<br>";
 
-
-#
 
 
 ?>
