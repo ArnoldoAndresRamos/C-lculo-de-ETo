@@ -5,8 +5,8 @@
 
 # Parametros usados en el calculo  
 
-$Tmax=;   # 1.- Temperatura Maxima 		-> Tmax °C
-$Tmin=;   # 2.- Temaperatura Minima 		-> Tmin °C
+$Tmax=35.8;   # 1.- Temperatura Maxima 		-> Tmax °C
+$Tmin=6.4;   # 2.- Temaperatura Minima 		-> Tmin °C
 $Altitud=; # 3.- Altitud			  		-> Altitud Metros					
 $u2=;		 # 4.- Velocidad del Viento		-> u2 metros/s-1
 $HRmax=;   # 5.- humedad relativa Maxima 	-> HRmax
