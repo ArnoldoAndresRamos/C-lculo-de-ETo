@@ -13,11 +13,11 @@ $HRmax=0;    // 5.- humedad relativa Maxima 	-> HRmax
 $HRmin=0;    // 6.- humedad relativa Maxima 	-> HRmin
 
 
-# Temperatura media Tmedia °C
+// Temperatura media Tmedia °C
 $Tmedia = ($Tmax+$Tmin)/2;
 
 
-# Δ (Pen curva de presión de vapor) en kPa°C-1
+//  Δ (Pen curva de presión de vapor) en kPa°C-1
 /*		(4098 [0.6108 e([17,27*Tmedia]+[Tmedia+237,3])])  
 ecuación	________________________________________________
 				(Tmedia+237,3)^2                       */
