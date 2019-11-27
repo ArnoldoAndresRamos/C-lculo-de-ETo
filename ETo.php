@@ -60,4 +60,17 @@ $e0_Tmin=0.6108*exp((17.27*$Tmin)/($Tmin+237.3));
 $es= ($e0_Tmax + $e0_Tmin)/2;
 echo "Presión de saturación de vapor es".$es."<br>";
 
+
+// Presión real de vapor (ea) derivada de datos de humedad relativa
+
+$ea = ((($e0_Tmin * $HRmax)/100)+(($e0_Tmax * $HRmin)/100))/2;
+echo" presion real de vapor ".$ea."<br>";
+
+//  Déficit de presión de vapor (es-ea) calculada con HRmin y HRmax
+
+$es_ea = $es - $ea;
+echo" Déficit de presion de vapor ".$es_ea."<br>";
+
+
+
 ?>
