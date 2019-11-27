@@ -31,9 +31,9 @@ echo "Pendiente de la curva de preción de vapor ".$r."<br>";
 
 
 // P (Presión atmosférica)
-$w1=(293-(0.0065*$Altitud))/293;
+$w=(293-(0.0065*$Altitud))/293;
 $w1=pow($w,5.26);
-$w1=101.3*$w1;
-echo "Presion Atmosférica ".$w1;
+$w2=101.3*$w1;
+echo "Presion Atmosférica ".$w2;
 
 ?>
