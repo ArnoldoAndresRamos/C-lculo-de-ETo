@@ -18,14 +18,17 @@ $Tmedia = ($Tmax+$Tmin)/2;
 
 
 //  Δ (Pen curva de presión de vapor) en kPa°C-1
-/*		(4098 [0.6108 e([17,27*Tmedia]+[Tmedia+237,3])])  
+/*		(4098 [0.6108 e([17,27*Tmedia]/[Tmedia+237,3])])  
 ecuación	________________________________________________
 				(Tmedia+237,3)^2                       */
 
-$PenCurvaDePresionDeVapor =4098 (0.6108 * exp(  (17.27*$Tmedia)/($Tmedia+237.3) )   /   (($Tmedia+237.3)^2);
-$PenCurvaDePresionDeVapor2 =((4098(0.6108*EXP((17.27*$Tmedia)/($Tmedia+237.3))))/(($Tmedia+237.3)^2));
-echo $PenCurvaDePresionDeVapor."<br>";
-echo $PenCurvaDePresionDeVapor2."<br>";
+$a=exp((17.27*$Tmedia)/($Tmedia+237.3));
+$b=0.6108*$a;
+$c=4098*$b;
+$d=pow(($Tmedia+237.3),2);
+$r=$c/$d;
+echo $r;
+
 
 
 
