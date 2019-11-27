@@ -84,7 +84,7 @@ $Dia_Juliano=20;
 $n=9.25; //
 //dr inverso de la dist rel Tierra - Sol
 
-$dr= 1 + 0,33 * cos((2 * 3.14159265358979323846 / 365)*$Dia_Juliano);
+$dr= 1 + 0.33 * cos((2 * 3.14159265358979323846 / 365)*$Dia_Juliano);
 echo " inverso de la distancia real tierra-sol ".$dr."<br>";
 
 
