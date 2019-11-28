@@ -10,7 +10,7 @@ $Altitud=100;  // 3.- Altitud			-> Altitud Metros
 $u2=3.1;     // 4.- Velocidad del Viento	-> u2 metros/s-1
 $HRmax=100;    // 5.- humedad relativa Maxima 	-> HRmax %
 $HRmin=23.8;    // 6.- humedad relativa Maxima 	-> HRmin %
-$Latitud=-32; 
+$Latitud=-36; 
 $Dia_Juliano=20;
 $n=9.25; 
 $cons_StefanBoltzmann = 0.000000004903; // (MJK^4/m^2)/día^1
@@ -81,7 +81,7 @@ Parametros
 -Dia juliano
 -n 
 */
-$Latitud=-32;
+$Latitud=-36;
 $Dia_Juliano=20;
 $n=9.25; //
 
@@ -94,7 +94,7 @@ echo " δ declinación solar ".$ds."<br>";
 
 $ws= acos(-tan($Latitud * 3.14159265358979323846 /180 )* tan($ds)); // ωs ángulo solar de puesta de Sol en Radianes (rad)
 echo " ωs ángulo solar de puesta de Sol ".$ws."<br>";
-/*
+
 $senoLatitudXseno$ds = (sin($Latitud * 3.14159265358979323846 /180 )) * (sin($ds)); // seno(latitud)*seno(δ) 
 $cosenoLatitudXcoseno$ds = (cos($Latitud * 3.14159265358979323846 /180 )) * (cos($ds)); //cos(latitud)*cos(δ)
 
@@ -108,7 +108,7 @@ echo " n/N ".$n_N."<br>";
 
 $Rs = (0.25+(0.5*$n_N))* $Ra; // Rs (R solar o de onda corta) en MJ m-2 día-1
 echo "Rs "$Rs."<br>";
-
+/*
 $Rso =  (0.75+2*($Altitud)/100000)*$Ra; 
 //Radiación solar en un día despejado Rso (R solar o de onda corta, c. desp) en MJ m-2 día-1
 echo "Rso "$Rso."<br>";
