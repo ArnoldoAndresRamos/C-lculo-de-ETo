@@ -137,7 +137,7 @@ echo " Rn ".$Rn."<br>";
 $G = 0;
 $Rn_G =  $Rn-$G; // MJ m^2 día^1
 echo "Rn - G ".$Rn_G."<br>";
-/*
+
 // 0.408(Rn - G)
 $Rn_G_mm = 0.408*($Rn_G); // mm
 echo " 0.408(Rn - G) ".$Rn_G_mm."<br>";
@@ -145,5 +145,5 @@ echo " 0.408(Rn - G) ".$Rn_G_mm."<br>";
 // Resultado de calculo de Evapotranspiracion de referencia  en mm/día
 $ETo= ($zr * $Rn_G_mm)+($zy * $Tmedia_u2 *$es_ea);
 echo "Evapotranspiracion de referencia :".$ETo."mm/día"."<br>";
- */
+
 ?>
