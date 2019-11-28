@@ -108,18 +108,18 @@ echo " n/N ".$n_N."<br>";
 
 $Rs = (0.25+(0.5*$n_N))* $Ra; // Rs (R solar o de onda corta) en MJ m-2 día-1
 echo "Rs ".$Rs."<br>";
-/*
-$Rso =  (0.75+2*($Altitud)/100000)*$Ra; 
+
 //Radiación solar en un día despejado Rso (R solar o de onda corta, c. desp) en MJ m-2 día-1
+$Rso =  (0.75+2*($Altitud)/100000)*$Ra; 
 echo "Rso "$Rso."<br>";
 
 $Rs_Rso = $Ro/$Rso; //  Rs/Rso Radiación relativa de onda corta
-echo "Rs/Rso "$Rs_$Rso."<br>";
+echo "Rs/Rso ".$Rs_$Rso."<br>";
 
 $Rns = (1-0.23 )*$Rs; // Rns Radiación neta de onda corta MJ m-2 día-1
-echo "Rns "$Rns."<br>";
+echo "Rns ".$Rns."<br>";
 
-
+/*
 //  Calculo de la Radiación neta de onda larga (Rnl)
 // σTmaxK4
 
