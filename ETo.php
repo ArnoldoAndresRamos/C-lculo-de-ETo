@@ -143,7 +143,7 @@ function ETo(){
 
 	// Resultado de calculo de Evapotranspiracion de referencia  en mm/día
 	$ETo= ($zr * $Rn_G_mm)+($zy * $Tmedia_u2 *$es_ea);
-	return "Evapotranspiracion de referencia :".$ETo."mm/día"."<br>";
+	echo $ETo; //"mm/día"."<br>"
 
 }
 
