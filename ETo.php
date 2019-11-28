@@ -10,7 +10,10 @@ $Altitud=100;  // 3.- Altitud			-> Altitud Metros
 $u2=3.1;     // 4.- Velocidad del Viento	-> u2 metros/s-1
 $HRmax=100;    // 5.- humedad relativa Maxima 	-> HRmax %
 $HRmin=23.8;    // 6.- humedad relativa Maxima 	-> HRmin %
-
+$Latitud=-32; 
+$Dia_Juliano=20;
+$n=9.25; 
+$cons_StefanBoltzmann = 0.000000004903; // (MJK^4/m^2)/día^1
 
 // Temperatura media Tmedia °C
 $Tmedia = ($Tmax+$Tmin)/2;
@@ -27,6 +30,7 @@ $r=$c/$d;
 echo "Pendiente de la curva de preción de vapor ".$r."<br>";
 
 
+
 //    P  Presión atmosférica  en KPa
 $w=(293-(0.0065*$Altitud))/293;
 $w1=pow($w,5.26);
@@ -38,9 +42,7 @@ echo "Presion Atmosférica ".$P."<br>";
 $y = 0.000665*$P;  // $P es Presión Atmosférica
 echo "Constante psicrometrica ".$y."<br>";
 
-
-//   (1+0,34u2)
-$u2_1 = 1+0.34*$u2;
+$u2_1 = 1+0.34*$u2;//   (1+0,34u2)
 echo "(1+0,34u2) ".$u2_1."<br>";
 			 
 $zr = $r/($r+$y*$u2_1); //  Δ/[Δ+γ(1+0,34u2)]
@@ -82,11 +84,65 @@ Parametros
 $Latitud=-32;
 $Dia_Juliano=20;
 $n=9.25; //
-//dr inverso de la dist rel Tierra - Sol
 
-$dr= 1 + 0.33 * cos((2 * 3.14159265358979323846 / 365)*$Dia_Juliano);
+$dr= 1 + 0.033 * cos((2 * 3.14159265358979323846 / 365)*$Dia_Juliano);//dr inverso de la dist rel Tierra - Sol
 echo " inverso de la distancia real tierra-sol ".$dr."<br>";
 
+$ds= 0.409 * sin(((2 * 3.14159265358979323846 / 365)*$Dia_Juliano) - 1.39 ); // δ declinación solar en Radianes (rad)
+echo " δ declinación solar ".$ds."<br>";
 
+$ws= acosh(-tan($Latitud * 3.14159265358979323846 /180 )* tan($ds)) // ωs ángulo solar de puesta de Sol en Radianes (rad)
+echo " ωs ángulo solar de puesta de Sol ".$ws."<br>";
+
+$senoLatitudXseno$ds = (sen($Latitud * 3.14159265358979323846 /180 )) * (sen($ds)); // seno(latitud)*seno(δ) 
+$cosenoLatitudXcoseno$ds = (cos($Latitud * 3.14159265358979323846 /180 )) * (cos($ds)); //cos(latitud)*cos(δ)
+
+$Ra = (24*60/3.14159265358979323846)*0.082*$dr*($ws*$senoLatitudXseno$ds + $cosenoLatitudXcoseno$ds*sen($ws)); //en MJm-2día-1
+echo "Ra "$Ra."<br>";
+
+$N = (24/3.14159265358979323846) * $ws; // Duración máxima de la insolación (N)
+echo " N ".$N."<br>";
+$n_N = $n/$N; //duración relativa de la insolación
+echo " n/N ".$n_N."<br>";
+
+$Rs = (0.25+(0.5*$n_N))* $Ra; // Rs (R solar o de onda corta) en MJ m-2 día-1
+echo "Rs "$Rs."<br>";
+
+$Rso =  (0.75+2*($Altitud)/100000)*$Ra; 
+//Radiación solar en un día despejado Rso (R solar o de onda corta, c. desp) en MJ m-2 día-1
+echo "Rso "$Rso."<br>";
+
+$Rs_Rso = $Ro/$Rso; //  Rs/Rso Radiación relativa de onda corta
+echo "Rs/Rso "$Rs_$Rso."<br>";
+
+$Rns = (1-0.23 )*$Rs; // Rns Radiación neta de onda corta MJ m-2 día-1
+echo "Rns "$Rns."<br>";
+
+
+//  Calculo de la Radiación neta de onda larga (Rnl)
+// σTmaxK4
+
+$TmaxK4= $cons_StefanBoltzmann*pow(($Tmax+273.16),4);
+$TmaxK4= $cons_StefanBoltzmann*pow(($Tmin+273.16),4);
+$promedio=($TmaxK4+$TmaxK4)/2;
+$Rnl= ($promedio)*(0.34-0.14*(sqrt($es)))*((1.35 *($Rs_Rso))-0.35); // Rnl (Radiación neta de onda larga) MJ m^2 día^1
+echo "Rnl "$Rnl."<br>";
+
+// Calculo de radiacion neta (Rn=Rns-Rnl)
+$Rn = $Rns-$Rnl; // MJ m^2 día^1
+echo " Rn ".$Rn."<br>";
+
+//Rn - G
+$G = 0;
+$Rn_G =  $Rn-$G; // MJ m^2 día^1
+echo "Rn - G ".$Rn_G."<br>";
+
+// 0.408(Rn - G)
+$Rn_G_mm = 0.408*($Rn_G); // mm
+echo " 0.408(Rn - G) ".$Rn_G_mm."<br>";
+
+// Resultado de calculo de Evapotranspiracion de referencia  en mm/día
+$ETo= ($zr * $Rn_G_mm)+($zy * $Tmedia_u2 *$es_ea);
+echo "Evapotranspiracion de referencia :".$ETo."mm/día"."<br>";
 
 ?>
