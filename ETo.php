@@ -85,7 +85,7 @@ $Latitud=-32;
 $Dia_Juliano=20;
 $n=9.25; //
 
- /*
+ // /*
 $dr= 1 + 0.033 * cos((2 * 3.14159265358979323846 / 365)*$Dia_Juliano);//dr inverso de la dist rel Tierra - Sol
 echo " inverso de la distancia real tierra-sol ".$dr."<br>";
 
@@ -100,7 +100,7 @@ $cosenoLatitudXcoseno$ds = (cos($Latitud * 3.14159265358979323846 /180 )) * (cos
 
 $Ra = (24*60/3.14159265358979323846)*0.082*$dr*($ws*$senoLatitudXseno$ds + $cosenoLatitudXcoseno$ds*sen($ws)); //en MJm-2día-1
 echo "Ra "$Ra."<br>";
-
+/*
 $N = (24/3.14159265358979323846) * $ws; // Duración máxima de la insolación (N)
 echo " N ".$N."<br>";
 $n_N = $n/$N; //duración relativa de la insolación
