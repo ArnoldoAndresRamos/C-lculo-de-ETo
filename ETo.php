@@ -100,7 +100,7 @@ $co = cos($Latitud*3.14159/180 ) * cos($ds); //cos(latitud)*cos(δ)
 
 $Ra = (24*60/3.14159265358979323846)*0.082*$dr*($ws* $se + $co*sin($ws)); //en MJm-2día-1
 echo "Ra ".$Ra."<br>";
-/*
+
 $N = (24/3.14159265358979323846) * $ws; // Duración máxima de la insolación (N)
 echo " N ".$N."<br>";
 $n_N = $n/$N; //duración relativa de la insolación
@@ -108,7 +108,7 @@ echo " n/N ".$n_N."<br>";
 
 $Rs = (0.25+(0.5*$n_N))* $Ra; // Rs (R solar o de onda corta) en MJ m-2 día-1
 echo "Rs "$Rs."<br>";
-
+/*
 $Rso =  (0.75+2*($Altitud)/100000)*$Ra; 
 //Radiación solar en un día despejado Rso (R solar o de onda corta, c. desp) en MJ m-2 día-1
 echo "Rso "$Rso."<br>";
