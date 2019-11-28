@@ -95,10 +95,10 @@ echo " δ declinación solar ".$ds."<br>";
 $ws= acosh(-tan($Latitud * 3.14159265358979323846 /180 )* tan($ds)) // ωs ángulo solar de puesta de Sol en Radianes (rad)
 echo " ωs ángulo solar de puesta de Sol ".$ws."<br>";
 
-$senoLatitudXseno$ds = (sen($Latitud * 3.14159265358979323846 /180 )) * (sen($ds)); // seno(latitud)*seno(δ) 
+$senoLatitudXseno$ds = (sen($Latitud * 3.14159265358979323846 /180 )) * (sin($ds)); // seno(latitud)*seno(δ) 
 $cosenoLatitudXcoseno$ds = (cos($Latitud * 3.14159265358979323846 /180 )) * (cos($ds)); //cos(latitud)*cos(δ)
 
-$Ra = (24*60/3.14159265358979323846)*0.082*$dr*($ws*$senoLatitudXseno$ds + $cosenoLatitudXcoseno$ds*sen($ws)); //en MJm-2día-1
+$Ra = (24*60/3.14159265358979323846)*0.082*$dr*($ws*$senoLatitudXseno$ds + $cosenoLatitudXcoseno$ds*sin($ws)); //en MJm-2día-1
 echo "Ra "$Ra."<br>";
 /*
 $N = (24/3.14159265358979323846) * $ws; // Duración máxima de la insolación (N)
