@@ -130,7 +130,9 @@ echo $TminK4."<br>";
 $promedio=($TmaxK4+$TminK4)/2;
 echo $promedio."<br>";
 $Rs_Rso2=(0.34-0.14*sqrt($es));
+echo $Rs_Rso2."<br>";
 $Rs_Rso3=((1.35 *($Rs_Rso))-0.35);
+echo $Rs_Rso3."<br>";
 $Rnl= $promedio * $Rs_Rso2 * $Rs_Rso3; // Rnl (Radiación neta de onda larga) MJ m^2 día^1
 echo "Rnl ".$Rnl."<br>";
 
