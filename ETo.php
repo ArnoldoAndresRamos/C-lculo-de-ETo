@@ -114,7 +114,7 @@ $Rso =  (0.75+2*($Altitud)/100000)*$Ra;
 echo "Rso ".$Rso."<br>";
 
 $Rs_Rso = $Ro/$Rso; //  Rs/Rso Radiación relativa de onda corta
-echo "Rs/Rso ".$Rs_$Rso."<br>";
+echo "Rs/Rso ".$Rs_Rso."<br>";
 
 $Rns = (1-0.23 )*$Rs; // Rns Radiación neta de onda corta MJ m-2 día-1
 echo "Rns ".$Rns."<br>";
