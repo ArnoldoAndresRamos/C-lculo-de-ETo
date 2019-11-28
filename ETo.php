@@ -126,7 +126,9 @@ echo "Rns ".$Rns."<br>";
 $TmaxK4= $cons_StefanBoltzmann*pow(($Tmax+273.16),4);
 $TminK4= $cons_StefanBoltzmann*pow(($Tmin+273.16),4);
 $promedio=($TmaxK4+$TminK4)/2;
-$Rnl= ($promedio)*(0.34-0.14*(sqrt($es)))*((1.35 *($Rs_Rso))-0.35); // Rnl (Radiación neta de onda larga) MJ m^2 día^1
+$Rs_Rso2=(0.34-0.14*sqrt($es));
+$Rs_Rso3=((1.35 *($Rs_Rso))-0.35);
+$Rnl= $promedio * $Rs_Rso2 * $Rs_Rso3; // Rnl (Radiación neta de onda larga) MJ m^2 día^1
 echo "Rnl ".$Rnl."<br>";
 
 // Calculo de radiacion neta (Rn=Rns-Rnl)
