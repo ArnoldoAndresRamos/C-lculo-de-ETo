@@ -111,7 +111,7 @@ echo "Rs ".$Rs."<br>";
 
 //Radiación solar en un día despejado Rso (R solar o de onda corta, c. desp) en MJ m-2 día-1
 $Rso =  (0.75+2*($Altitud)/100000)*$Ra; 
-echo "Rso "$Rso."<br>";
+echo "Rso ".$Rso."<br>";
 
 $Rs_Rso = $Ro/$Rso; //  Rs/Rso Radiación relativa de onda corta
 echo "Rs/Rso ".$Rs_$Rso."<br>";
