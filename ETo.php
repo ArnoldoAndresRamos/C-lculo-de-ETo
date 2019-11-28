@@ -57,8 +57,7 @@ function ETo(){
 	//echo "γ/[Δ+γ(1+0,34u2)] ".$zy."<br>";
 
 	$Tmedia_u2 = (900/($Tmedia + 273))*$u2; //[ 900 / (Tmedia + 273) ] u2
-	//echo "[ 900 / (Tmedia + 273) ] u2 ".$Tmedia_u2."<br>";
-
+	
 
 	// Calculo del déficit de Presión de vapor 
 	$e0_Tmax=0.6108*exp((17.27*$Tmax)/($Tmax+237.3)); // KPa
@@ -66,17 +65,13 @@ function ETo(){
 
 	//Presión de saturación de vapor es = [(e°(Tmax) + e°(Tmin)]/2
 	$es= ($e0_Tmax + $e0_Tmin)/2; //KPa
-	//echo "Presión de saturación de vapor es".$es."<br>";
-
-
+	
 	// Presión real de vapor (ea) derivada de datos de humedad relativa
 	$ea = ((($e0_Tmin * $HRmax)/100)+(($e0_Tmax * $HRmin)/100))/2; //KPa
-	//echo" presion real de vapor ".$ea."<br>";
-
+	
 	/*  Déficit de presión de vapor (es-ea) calculada con HRmin y HRmax  */ 
 	$es_ea = $es - $ea; // KPa
-	//echo" Déficit de presion de vapor ".$es_ea."<br>";
-
+	
 
 
 	/*  Calculo de Radiación
@@ -86,68 +81,65 @@ function ETo(){
 	-Dia juliano
 	-n 
 	*/
-	$Latitud=-36;
-	$Dia_Juliano=20;
-	$n=9.25; //
+	$Latitud = $Latitud;
+	$Dia_Juliano = $Dia_Juliano;
+	$n = $n; 
 
-	 // /*
-	$dr= 1 + 0.033 * cos((2 * 3.14159265358979323846 / 365)*$Dia_Juliano);//dr inverso de la dist rel Tierra - Sol
-	//echo " inverso de la distancia real tierra-sol ".$dr."<br>";
+	//dr inverso de la dist rel Tierra - Sol
+	$dr= 1 + 0.033 * cos((2 * 3.14159265358979323846 / 365)*$Dia_Juliano);
+	
+	// δ declinación solar en Radianes (rad)
+	$ds= 0.409 * sin(((2 * 3.14159265358979323846 / 365)*$Dia_Juliano) - 1.39 ); 
 
-	$ds= 0.409 * sin(((2 * 3.14159265358979323846 / 365)*$Dia_Juliano) - 1.39 ); // δ declinación solar en Radianes (rad)
-	//echo " δ declinación solar ".$ds."<br>";
-
-	$ws= acos(-tan($Latitud * 3.14159265358979323846 /180 )* tan($ds)); // ωs ángulo solar de puesta de Sol en Radianes (rad)
-	//echo " ωs ángulo solar de puesta de Sol ".$ws."<br>";
-
+	// ωs ángulo solar de puesta de Sol en Radianes (rad)
+	$ws= acos(-tan($Latitud * 3.14159265358979323846 /180 )* tan($ds)); 
 	$se = sin($Latitud*3.14159/180 ) * sin($ds); // seno(latitud)*seno(δ) 
 	$co = cos($Latitud*3.14159/180 ) * cos($ds); //cos(latitud)*cos(δ)
-
 	$Ra = (24*60/3.14159265358979323846)*0.082*$dr*($ws* $se + $co*sin($ws)); //en MJm-2día-1
-	//echo "Ra ".$Ra."<br>";
-
-	$N=(24/3.14159265358979323846)*$ws; // Duración máxima de la insolación (N)
-	//echo " N ".$N."<br>";
-	$n_N = $n/$N; //duración relativa de la insolación
-	//echo " n/N ".$n_N."<br>";
-
-	$Rs = (0.25+(0.5*$n_N))* $Ra; // Rs (R solar o de onda corta) en MJ m-2 día-1
-	//echo "Rs ".$Rs."<br>";
-
+	
+	
+	// Duración máxima de la insolación (N)
+	$N=(24/3.14159265358979323846)*$ws; 
+	
+	//duración relativa de la insolación
+	$n_N = $n/$N; 
+		
+	// Rs (R solar o de onda corta) en MJ m-2 día-1
+	$Rs = (0.25+(0.5*$n_N))* $Ra; 
+	
 	//Radiación solar en un día despejado Rso (R solar o de onda corta, c. desp) en MJ m-2 día-1
 	$Rso =  (0.75+2*($Altitud)/100000)*$Ra; 
-	//echo "Rso ".$Rso."<br>";
-
-	$Rs_Rso = $Rs/$Rso; //  Rs/Rso Radiación relativa de onda corta
-	//echo "Rs/Rso ".$Rs_Rso."<br>";
-
-	$Rns = (1-0.23 )*$Rs; // Rns Radiación neta de onda corta MJ m-2 día-1
-	//echo "Rns ".$Rns."<br>";
-
-
+	
+	//  Rs/Rso Radiación relativa de onda corta
+	$Rs_Rso = $Rs/$Rso; 
+	
+	// Rns Radiación neta de onda corta MJ m-2 día-1
+	$Rns = (1-0.23 )*$Rs; 
+	
+	
 	//  Calculo de la Radiación neta de onda larga (Rnl)
-	// σTmaxK4
 
+	// σTmaxK4
 	$TmaxK4= $cons_StefanBoltzmann*pow(($Tmax+273.16),4);
 	$TminK4= $cons_StefanBoltzmann*pow(($Tmin+273.16),4);
 	$promedio=($TmaxK4+$TminK4)/2;
 	$Rs_Rso2=(0.34-(0.14*sqrt($ea)));
 	$Rs_Rso3=((1.35 *($Rs_Rso))-0.35);
 	$Rnl= $promedio * $Rs_Rso2 * $Rs_Rso3; // Rnl (Radiación neta de onda larga) MJ m^2 día^1
-	//echo "Rnl ".$Rnl."<br>";
+	
 
 	// Calculo de radiacion neta (Rn=Rns-Rnl)
 	$Rn = $Rns-$Rnl; // MJ m^2 día^1
-	//echo " Rn ".$Rn."<br>";
+	
 
 	//Rn - G
 	$G = 0;
 	$Rn_G =  $Rn-$G; // MJ m^2 día^1
-	//echo "Rn - G ".$Rn_G."<br>";
+	
 
 	// 0.408(Rn - G)
 	$Rn_G_mm = 0.408*($Rn_G); // mm
-	//echo " 0.408(Rn - G) ".$Rn_G_mm."<br>";
+	
 
 	// Resultado de calculo de Evapotranspiracion de referencia  en mm/día
 	$ETo= ($zr * $Rn_G_mm)+($zy * $Tmedia_u2 *$es_ea);
