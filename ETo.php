@@ -85,6 +85,7 @@ $Latitud=-32;
 $Dia_Juliano=20;
 $n=9.25; //
 
+ /*
 $dr= 1 + 0.033 * cos((2 * 3.14159265358979323846 / 365)*$Dia_Juliano);//dr inverso de la dist rel Tierra - Sol
 echo " inverso de la distancia real tierra-sol ".$dr."<br>";
 
@@ -144,5 +145,5 @@ echo " 0.408(Rn - G) ".$Rn_G_mm."<br>";
 // Resultado de calculo de Evapotranspiracion de referencia  en mm/día
 $ETo= ($zr * $Rn_G_mm)+($zy * $Tmedia_u2 *$es_ea);
 echo "Evapotranspiracion de referencia :".$ETo."mm/día"."<br>";
-
+ */
 ?>
