@@ -4,21 +4,23 @@
 // usando metodo Ecuacion de Penman-Monteith 
 
 //  Parametros usados en el calculo  
-
 $Tmax=35.8;  // 1.- Temperatura Maxima 		-> Tmax °C
 $Tmin=6.4;   // 2.- Temaperatura Minima 	-> Tmin °C
-$Altitud=100;  // 3.- Altitud			-> Altitud Metros					
-$u2=3.1;     // 4.- Velocidad del Viento	-> u2 metros/s-1
 $HRmax=100;    // 5.- humedad relativa Maxima 	-> HRmax %
 $HRmin=23.8;    // 6.- humedad relativa Maxima 	-> HRmin %
 $Latitud=-36; 
+$Altitud=100;  // 3.- Altitud			-> Altitud Metros
 $Dia_Juliano=20;
+
+$u2=3.1;     // 4.- Velocidad del Viento	-> u2 metros/s-1
 $n=9.25; 
-$cons_StefanBoltzmann = 0.000000004903; // (MJK^4/m^2)/día^1
 
 
-
-function ETo(){
+function ETo($Tmax, $Tmin, $HRmax,  $HRmin, $Latitud, $Altitud, $Dia_Juliano, $u2, $n ){
+	
+	//constante de Boltzmann
+	$cons_StefanBoltzmann = 0.000000004903; // (MJK^4/m^2)/día^1
+	
 	
 	// Temperatura media Tmedia °C
 	$Tmedia = ($Tmax+$Tmin)/2;
@@ -117,31 +119,33 @@ function ETo(){
 	$Rns = (1-0.23 )*$Rs; 
 	
 	
-	//  Calculo de la Radiación neta de onda larga (Rnl)
+	/*   Calculo de la Radiación neta de onda larga (Rnl)  */
 
 	// σTmaxK4
-	$TmaxK4= $cons_StefanBoltzmann*pow(($Tmax+273.16),4);
-	$TminK4= $cons_StefanBoltzmann*pow(($Tmin+273.16),4);
-	$promedio=($TmaxK4+$TminK4)/2;
-	$Rs_Rso2=(0.34-(0.14*sqrt($ea)));
-	$Rs_Rso3=((1.35 *($Rs_Rso))-0.35);
-	$Rnl= $promedio * $Rs_Rso2 * $Rs_Rso3; // Rnl (Radiación neta de onda larga) MJ m^2 día^1
+	$TmaxK4   = $cons_StefanBoltzmann*pow(($Tmax+273.16),4);
+	$TminK4   = $cons_StefanBoltzmann*pow(($Tmin+273.16),4);
+	$promedio = ($TmaxK4+$TminK4)/2;
+	
+	$Rs_Rso2  = (0.34-(0.14*sqrt($ea)));
+	$Rs_Rso3  = ((1.35 *($Rs_Rso))-0.35);
+	
+	$Rnl= $promedio *  $Rs_Rso2 *  $Rs_Rso3; // Rnl (Radiación neta de onda larga) MJ m^2 día^1
 	
 
-	// Calculo de radiacion neta (Rn=Rns-Rnl)
+	/*      Calculo de radiacion neta (Rn=Rns-Rnl)    */
 	$Rn = $Rns-$Rnl; // MJ m^2 día^1
 	
 
-	//Rn - G
+	/*  Rn - G  */
 	$G = 0;
 	$Rn_G =  $Rn-$G; // MJ m^2 día^1
 	
 
-	// 0.408(Rn - G)
+	/*    0.408(Rn - G)    */
 	$Rn_G_mm = 0.408*($Rn_G); // mm
 	
 
-	// Resultado de calculo de Evapotranspiracion de referencia  en mm/día
+	/*    Resultado de calculo de Evapotranspiracion de referencia  en mm/día  */
 	$ETo= ($zr * $Rn_G_mm)+($zy * $Tmedia_u2 *$es_ea);
 	echo $ETo; //"mm/día"."<br>"
 
