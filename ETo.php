@@ -1,5 +1,5 @@
 <?php
-
+// nuevo ramal
 // Calculo de la evapotranpiracion de referncia
 // usando metodo Ecuacion de Penman-Monteith 
 
@@ -14,7 +14,6 @@ $Dia_Juliano=20;
 
 $u2=3.1;     // 4.- Velocidad del Viento	-> u2 metros/s-1
 $n=9.25; 
-
 
 function ETo($Tmax, $Tmin, $HRmax,  $HRmin, $Latitud, $Altitud, $Dia_Juliano, $u2, $n ){
 	
