@@ -5,7 +5,7 @@
 */
 function ETo($Tmax, $Tmin, $HRmax,  $HRmin, $Latitud, $Altitud, $Dia_Juliano, $u2, $n ){
 	
-	$cons_StefanBoltzmann = 0.000000004903;
+	$cons_SB = 0.000000004903;
 	$Tmedia = ($Tmax+$Tmin)/2;
 	$a=exp((17.27*$Tmedia)/($Tmedia+237.3));
 	$b=0.6108*$a;
@@ -24,20 +24,20 @@ function ETo($Tmax, $Tmin, $HRmax,  $HRmin, $Latitud, $Altitud, $Dia_Juliano, $u
 	$e0_Tmin=0.6108*exp((17.27*$Tmin)/($Tmin+237.3));
 	$es= ($e0_Tmax + $e0_Tmin)/2;
 	$ea = ((($e0_Tmin * $HRmax)/100)+(($e0_Tmax * $HRmin)/100))/2; 
-	$dr= 1 + 0.033 * cos((2 * 3.14159265358979323846 / 365)*$Dia_Juliano);
-	$ds= 0.409 * sin(((2 * 3.14159265358979323846 / 365)*$Dia_Juliano) - 1.39 ); 
-	$ws= acos(-tan($Latitud * 3.14159265358979323846 /180 )* tan($ds)); 
-	$se = sin($Latitud*3.14159/180 ) * sin($ds); // seno(latitud)*seno(δ) 
-	$co = cos($Latitud*3.14159/180 ) * cos($ds); //cos(latitud)*cos(δ)
-	$Ra = (24*60/3.14159265358979323846)*0.082*$dr*($ws* $se + $co*sin($ws)); //en MJm-2día-1
-	$N=(24/3.14159265358979323846)*$ws; 
+	$dr= 1 + 0.033 * cos((2 * 3.14159 / 365)*$Dia_Juliano);
+	$ds= 0.409 * sin(((2 * 3.14159 / 365)*$Dia_Juliano) - 1.39 ); 
+	$ws= acos(-tan($Latitud * 3.14159 /180 )* tan($ds)); 
+	$se = sin($Latitud*3.14159/180 ) * sin($ds);
+	$co = cos($Latitud*3.14159/180 ) * cos($ds);
+	$Ra = (24*60/3.14159)*0.082*$dr*($ws* $se + $co*sin($ws)); //en MJm-2día-1
+	$N=(24/3.14159)*$ws; 
 	$n_N = $n/$N; 
 	$Rs = (0.25+(0.5*$n_N))* $Ra; 
 	$Rso =  (0.75+2*($Altitud)/100000)*$Ra; 
 	$Rs_Rso = $Rs/$Rso; 
 	$Rns = (1-0.23 )*$Rs; 
-	$TmaxK4   = $cons_StefanBoltzmann*pow(($Tmax+273.16),4);
-	$TminK4   = $cons_StefanBoltzmann*pow(($Tmin+273.16),4);
+	$TmaxK4   = $cons_SB*pow(($Tmax+273.16),4);
+	$TminK4   = $cons_SB*pow(($Tmin+273.16),4);
 	$promedio = ($TmaxK4+$TminK4)/2;
 	$Rs_Rso2  = (0.34-(0.14*sqrt($ea)));
 	$Rs_Rso3  = ((1.35 *($Rs_Rso))-0.35);
