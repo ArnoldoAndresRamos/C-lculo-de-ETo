@@ -17,6 +17,7 @@ $n=9.25;
 $fecha="24-11-2019";
 
 function numDia($fecha){
+	
 	$dia = $fecha[0].$fecha[1];
 	$mes =  $fecha[3].$fecha[4];
 	$anio = $fecha[6].$fecha[7].$fecha[8].$fecha[9];
@@ -38,15 +39,10 @@ function numDia($fecha){
 	}
 
 	return $num_dia;
-	echo
+	echo "mes :".$mes." dia:".$dia."<br>"; 
 	echo $num_dia;
 };
 
-$Dia_Juliano = numDia($fecha);
-
-echo $Dia_Juliano."<br>"; 
-
-echo numDia($fecha)."<br>";
 
 function ETo($Tmax, $Tmin, $HRmax,  $HRmin, $Latitud, $Altitud, $Dia_Juliano, $u2, $n ){
 	
