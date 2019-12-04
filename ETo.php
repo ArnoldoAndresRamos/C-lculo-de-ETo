@@ -25,7 +25,7 @@ function numDia($fecha){
 	$n=1;
 	$num_dia=0;
 
-	if ($mes>$n)
+	while($mes>$n)
 	{
 		$num_dia = $num_dia + $dias_mes[i];
 		$i = $i+1;
@@ -43,7 +43,7 @@ function numDia($fecha){
 
 $Dia_Juliano = numDia($fecha);
 echo $Dia_Juliano."<br>"; 
-
+numDia($fecha)."<br>";
 function ETo($Tmax, $Tmin, $HRmax,  $HRmin, $Latitud, $Altitud, $Dia_Juliano, $u2, $n ){
 	
 	//constante de Boltzmann
