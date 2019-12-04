@@ -38,10 +38,11 @@ function numDia($fecha){
 	}
 
 	return $num_dia;
-	echo $num_dia;
+	//echo $num_dia;
 };
 
-$Dia_Juliano = numDia($fecha)."<br>";
+$Dia_Juliano = numDia($fecha);
+echo $Dia_Juliano."<br>"; 
 
 function ETo($Tmax, $Tmin, $HRmax,  $HRmin, $Latitud, $Altitud, $Dia_Juliano, $u2, $n ){
 	
