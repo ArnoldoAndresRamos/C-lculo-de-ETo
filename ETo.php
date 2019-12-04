@@ -14,7 +14,7 @@ $Dia_Juliano=20;
 
 $u2=3.1;     // 4.- Velocidad del Viento	-> u2 metros/s-1
 $n=9.25; 
-$fecha="24-01-2019";
+$fecha="24-02-2019";
 
 function numDia($fecha){
 	
