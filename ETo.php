@@ -31,6 +31,7 @@ function numDia($fecha){
 		$num_dia = $num_dia + $dias_mes[i];
 		$i = $i+1;
 		$n = $n+1; 
+		echo "num_dia:".$num_dia." i:".$i." n:".$n."<br>";
 	}
 
 	if($anio % 4 ==0 and $mes>2) 
