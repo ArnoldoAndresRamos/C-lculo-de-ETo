@@ -14,6 +14,34 @@ $Dia_Juliano=20;
 
 $u2=3.1;     // 4.- Velocidad del Viento	-> u2 metros/s-1
 $n=9.25; 
+$fecha="24-11-2019";
+
+function numDia($fecha){
+	$dia = $fecha[0].$fecha[1];
+	$mes =  $fecha[3].$fecha[4];
+	$año = $fecha[6].$fecha[7].$fecha[8].$fecha[9];
+	$dias_mes = [31,28,31,30,31,30,31,31,30,31,30,31];
+	$i=0;
+	$n=1;
+	$num_dia=0;
+
+	if ($mes>$n)
+	{
+		$num_dia = $num_dia + $dias_mes[i];
+		$i = $i+1;
+		$n = $n+1; 
+	}
+
+	if($año % 4 ==0 & $mes>2) 
+	{
+		$num_dia = $num_dia + 1;
+	}
+
+	return $num_dia;
+	echo $num_dia;
+};
+
+numDia($fecha);
 
 function ETo($Tmax, $Tmin, $HRmax,  $HRmin, $Latitud, $Altitud, $Dia_Juliano, $u2, $n ){
 	
