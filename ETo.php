@@ -25,7 +25,7 @@ function numDia($fecha){
 	$i=0;
 	$n=1;
 	$num_dia=$dia;
-/*
+
 	while($mes>$n)
 	{
 		$num_dia = $num_dia + $dias_mes[i];
@@ -38,7 +38,7 @@ function numDia($fecha){
 	{
 		$num_dia = $num_dia + 1;
 	}
-*/
+
 	//return $num_dia;
 	echo "mes :".$mes." dia:".$dia."<br>"; 
 	echo $num_dia;
