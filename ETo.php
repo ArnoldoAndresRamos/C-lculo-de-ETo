@@ -42,6 +42,7 @@ function numDia($fecha){
 	echo "mes :".$mes." dia:".$dia."<br>"; 
 	echo $num_dia;
 };
+numDia($fecha)."<br>";
 
 
 function ETo($Tmax, $Tmin, $HRmax,  $HRmin, $Latitud, $Altitud, $Dia_Juliano, $u2, $n ){
